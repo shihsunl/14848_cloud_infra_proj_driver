@@ -24,7 +24,12 @@ WORKDIR /temp
 RUN git clone https://github.com/shihsunl/14848_cloud_infra_proj_driver.git
 RUN cp -r /temp/14848_cloud_infra_proj_driver/www/* /var/www/html/
 RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
+#RUN /etc/init.d/apache2 restart
 
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 hello:app
+
+RUN cp -r /temp/14848_cloud_infra_proj_driver/* /temp/
+#CMD /etc/init.d/apache2 restart
+#ENTRYPOINT /etc/init.d/apache2 restart
+CMD /etc/init.d/apache2 restart && exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 hello:app
 #ENTRYPOINT /etc/init.d/apache2 restart && /bin/bash
 
