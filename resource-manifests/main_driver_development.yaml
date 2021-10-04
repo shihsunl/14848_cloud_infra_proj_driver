@@ -24,5 +24,8 @@ spec:
         - image: shihsunl/14848_proj_driver
           imagePullPolicy: Always
           name: main-driver
+          env:
+            - name: SPARK_SERVICE_URL
+              value: "http://spark-service"
           ports:
             - containerPort: 80

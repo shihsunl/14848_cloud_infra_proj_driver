@@ -25,10 +25,12 @@ RUN git clone https://github.com/shihsunl/14848_cloud_infra_proj_driver.git
 RUN cp -r /temp/14848_cloud_infra_proj_driver/www/* /var/www/html/
 RUN echo "ServerName 127.0.0.1" >> /etc/apache2/apache2.conf
 #RUN /etc/init.d/apache2 restart
-
-
+RUN a2enmod proxy
+RUN a2enmod proxy_http
+RUN a2enmod proxy_balancer
 RUN cp -r /temp/14848_cloud_infra_proj_driver/* /temp/
-#CMD /etc/init.d/apache2 restart
+RUN cp -r apache2_config/000-default.conf /etc/apache2/sites-available/000-default.conf
+
 #ENTRYPOINT /etc/init.d/apache2 restart
 CMD /etc/init.d/apache2 restart && exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 hello:app
 #ENTRYPOINT /etc/init.d/apache2 restart && /bin/bash
