@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spark-app
+  labels:
+    app: spark-app
+spec:
+  selector:
+     matchLabels:
+       app: spark-app
+  replicas: 2
+  minReadySeconds: 15
+  strategy:
+    type: RollingUpdate
+    rollingUpdate: 
+      maxUnavailable: 1
+      maxSurge: 1 
+  template:
+    metadata:
+      labels:
+        app: spark-app
+    spec:
+      containers:
+        - image: shihsunl/14848_proj_spark
+          imagePullPolicy: Always
+          name: spark-app
+          ports:
+            - containerPort: 4040
