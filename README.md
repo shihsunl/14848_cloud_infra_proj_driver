@@ -22,6 +22,10 @@ kubectl create -f service_main_driver_ssh-lb.yaml
 
 - Now, Front-End Service is ready! You can open your browser and access the IP with port 80. For my example, according to the Service & Ingress page, I can use 34.135.47.138:80 to access Service website and select the service that you want.
 - Before you select the service, make sure you deploy the service to Google Cloud Platform Kubernetes Cluster.
+- Spark Service: `https://github.com/shihsunl/14848_cloud_infra_proj_spark`
+- Jupyter Service: `https://github.com/shihsunl/14848_cloud_infra_proj_jupyter`
+- Hadoop Service: `https://github.com/shihsunl/14848_cloud_infra_proj_hadoop`
+- SonarQube and SonarScanner Service: `https://github.com/shihsunl/14848_cloud_infra_proj_sonarqube_sonarscanner`
 
 - Service Website
 ![website](screenshot/website.png)
