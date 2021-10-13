@@ -8,7 +8,7 @@
 ```
 git clone https://github.com/shihsunl/14848_cloud_infra_proj_driver.git
 ```
-- Modify docker image in `main_driver_ssh_development.yaml`.
+- Modify docker image in `resource-manifests/main_driver_ssh_development.yaml`.
 - Execute 2 yaml file in resource-manifests folder.
 ```
 cd 14848_cloud_infra_proj_driver
