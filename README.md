@@ -1,14 +1,15 @@
 # 14848_cloud_infra_proj_driver
 
 ## How to build docker image
-- Run `./build.sh` or `docker build --no-cache --progress=plain -t shihsunl/14848_proj_driver:ssh . `
+- Run `docker build --no-cache --progress=plain -t YOUR_DOCKER_ID/14848_proj_driver:ssh . ` and push the image to DockerHub.
 
 ## Deploy docker image to Google Cloud Platform Kubernetes Cluster
 - Open Cloud Shell on GCP and clone the repository:
 ```
 git clone https://github.com/shihsunl/14848_cloud_infra_proj_driver.git
 ```
-- Execute 2 yaml file in resource-manifests folder
+- Modify docker image in `main_driver_ssh_development.yaml`.
+- Execute 2 yaml file in resource-manifests folder.
 ```
 cd 14848_cloud_infra_proj_driver
 kubectl apply -f main_driver_ssh_development.yaml
