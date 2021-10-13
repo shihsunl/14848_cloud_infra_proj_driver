@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: main-driver
+  name: main-driver-ssh
   labels:
-    app: main-driver
+    app: main-driver-ssh
 spec:
   selector:
     matchLabels:
-      app: main-driver
+      app: main-driver-ssh
   replicas: 2
   minReadySeconds: 15
   strategy:
@@ -18,12 +18,12 @@ spec:
   template:
     metadata:
       labels:
-        app: main-driver
+        app: main-driver-ssh
     spec:
       containers:
-        - image: shihsunl/14848_proj_driver:ssh_ver
+        - image: shihsunl/14848_proj_driver:ssh
           imagePullPolicy: Always
-          name: main-driver_ssh
+          name: main-driver-ssh
           env:
             - name: SPARK_SERVICE_URL
               value: "http://spark-service"
