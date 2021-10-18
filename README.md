@@ -43,16 +43,16 @@ kubectl create -f service_main_driver_ssh-lb.yaml
 - SonarQube Service
 ![sonarqube](screenshot/sonarqube.png)
 - SonarScanner Demo Website
-- Normally, we need to use commandline to execute SonarScanner. However, we can not allow user to access our server and use commandline. Therefore, I've created a RESTful API Server to let user use SonarScanner.
-- How to use: 
-    - First you need to create a project in SonarQube and get the token.
-    - Then, choose a repository that you want to scan.
-    - Input Git repo url, Repo project name, SonarQube Project Key, and SonarQube Project token
-    - Or you can use API `http://{IP}/{BASE_URL}/scanrun` to trigger SonarScanner.
-    - Example: 
-    ```
-    curl -X POST -F 'git_url=https://github.com/xxx/xxxxx.git' -F 'projectkey=YOUR_PROJECT_KEY' -F 'sources=PROJECT_NAME' -F 'token=xxxxxxxxx'  'http://{IP}/{BASE_URL}/scanrun'
+    - Normally, we need to use commandline to execute SonarScanner. However, we can not allow user to access our server and use commandline. Therefore, I've created a RESTful API Server to let user use SonarScanner.
+    - How to use: 
+        - First you need to create a project in SonarQube and get the token.
+        - Then, choose a repository that you want to scan.
+        - Input Git repo url, Repo project name, SonarQube Project Key, and SonarQube Project token
+        - Or you can use API `http://{IP}/{BASE_URL}/scanrun` to trigger SonarScanner.
+        - Example: 
+        ```
+        curl -X POST -F 'git_url=https://github.com/xxx/xxxxx.git' -F 'projectkey=YOUR_PROJECT_KEY' -F 'sources=PROJECT_NAME' -F 'token=xxxxxxxxx'  'http://{IP}/{BASE_URL}/scanrun'
 
-    curl -X POST -F 'git_url=https://github.com/shihsunl/14848_Cloud_Infra_HW3.git' -F 'projectkey=test76' -F 'token=3e7c17d0634217c9946d3cb994d299bd1a22fb59' -F 'sources=14848_Cloud_Infra_HW3' 'http://34.135.47.138/sonarscanner/scanrun'
-    ```
+        curl -X POST -F 'git_url=https://github.com/shihsunl/14848_Cloud_Infra_HW3.git' -F 'projectkey=test76' -F 'token=3e7c17d0634217c9946d3cb994d299bd1a22fb59' -F 'sources=14848_Cloud_Infra_HW3' 'http://34.135.47.138/sonarscanner/scanrun'
+        ```
 ![sonarscanner](screenshot/sonarscanner.png)
