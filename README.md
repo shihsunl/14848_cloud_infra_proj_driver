@@ -29,13 +29,30 @@ kubectl create -f service_main_driver_ssh-lb.yaml
 
 - Service Website
 ![website](screenshot/website.png)
+![sonarscanner_frontend](screenshot/sonarscanner_frontend.png)
+
+- I've used Reverse Proxy to make different url paths redirect to different services. For instance, when you use `34.135.47.138/spark`, it will redirect to `http://spark-service` which is the spark service with port 8080. You can check `https://github.com/shihsunl/14848_cloud_infra_proj_spark/blob/master/resource-manifests/service-spark.yaml` for more detail.
+![reverse_proxy](screenshot/reverse_proxy.png)
+
 - Hadoop Service
 ![hadoop](screenshot/hadoop.png)
 - Spark Service
 ![spark](screenshot/spark.png)
-- SonarQube and SonarScanner Service
-![sonarqube](screenshot/sonarqube.png)
 - Jupyter Service
 ![jupyter](screenshot/jupyter.png)
-- I've used Reverse Proxy to make different url paths redirect to different services. For instance, when you use `34.135.47.138/spark`, it will redirect to `http://spark-service` which is the spark service with port 8080. You can check `https://github.com/shihsunl/14848_cloud_infra_proj_spark/blob/master/resource-manifests/service-spark.yaml` for more detail.
-![reverse_proxy](screenshot/reverse_proxy.png)
+- SonarQube Service
+![sonarqube](screenshot/sonarqube.png)
+- SonarScanner Demo Website
+- Normally, we need to use commandline to execute SonarScanner. However, we can not allow user to access our server and use commandline. Therefore, I've created a RESTful API Server to let user use SonarScanner.
+- How to use: 
+    - First you need to create a project in SonarQube and get the token.
+    - Then, choose a repository that you want to scan.
+    - Input Git repo url, Repo project name, SonarQube Project Key, and SonarQube Project token
+    - Or you can use API `http://{IP}/{BASE_URL}/scanrun` to trigger SonarScanner.
+    - Example: 
+    ```
+    curl -X POST -F 'git_url=https://github.com/xxx/xxxxx.git' -F 'projectkey=YOUR_PROJECT_KEY' -F 'sources=PROJECT_NAME' -F 'token=xxxxxxxxx'  'http://{IP}/{BASE_URL}/scanrun'
+
+    curl -X POST -F 'git_url=https://github.com/shihsunl/14848_Cloud_Infra_HW3.git' -F 'projectkey=test76' -F 'token=3e7c17d0634217c9946d3cb994d299bd1a22fb59' -F 'sources=14848_Cloud_Infra_HW3' 'http://34.135.47.138/sonarscanner/scanrun'
+    ```
+![sonarscanner](screenshot/sonarscanner.png)
