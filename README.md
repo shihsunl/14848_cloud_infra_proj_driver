@@ -52,10 +52,10 @@ kubectl create -f service_main_driver_ssh-lb.yaml
         - First you need to create a project in SonarQube and get the token.
         - Then, choose a repository that you want to scan.
         - Input Git repo url, Repo project name, SonarQube Project Key, and SonarQube Project token
-        - Or you can use API `http://{IP}/{BASE_URL}/scanrun` to trigger SonarScanner.
+        - Or you can use API `http://{FrontEnd_Website_Public_IP}/{BASE_URL}/scanrun` to trigger SonarScanner.
         - Example: 
         ```
-        curl -X POST -F 'git_url=https://github.com/xxx/xxxxx.git' -F 'projectkey=YOUR_PROJECT_KEY' -F 'sources=PROJECT_NAME' -F 'token=xxxxxxxxx'  'http://{IP}/{BASE_URL}/scanrun'
+        curl -X POST -F 'git_url=https://github.com/xxx/xxxxx.git' -F 'projectkey=YOUR_PROJECT_KEY' -F 'sources=PROJECT_NAME' -F 'token=xxxxxxxxx'  'http://{FrontEnd_Website_Public_IP}/{BASE_URL}/scanrun'
 
         curl -X POST -F 'git_url=https://github.com/shihsunl/14848_Cloud_Infra_HW3.git' -F 'projectkey=test76' -F 'token=3e7c17d0634217c9946d3cb994d299bd1a22fb59' -F 'sources=14848_Cloud_Infra_HW3' 'http://34.135.47.138/sonarscanner/scanrun'
         ```
