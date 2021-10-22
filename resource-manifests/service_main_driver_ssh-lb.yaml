@@ -16,6 +16,6 @@ spec:
   - port: 8080
     protocol: TCP
     targetPort: 8080
-    name: tcp8080
+    name: terminalport
   selector:
     app: main-driver-ssh
