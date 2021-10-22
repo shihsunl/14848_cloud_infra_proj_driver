@@ -39,4 +39,10 @@ RUN echo "if [[ -n \$SSH_CONNECTION ]] ; then\n    /temp/run.sh\nfi" >> /etc/bas
 RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 test
 RUN echo 'test:test' | chpasswd # sets the password for the user test to test
 
-CMD /etc/init.d/ssh restart && /etc/init.d/apache2 restart && exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 hello:app
+# web terminal
+WORKDIR /temp
+RUN wget https://github.com/yudai/gotty/releases/download/v1.0.1/gotty_linux_amd64.tar.gz &&\
+    tar -zxvf gotty_linux_amd64.tar.gz
+
+CMD /etc/init.d/ssh restart && /etc/init.d/apache2 restart && /temp/gotty -w bash
+#exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 hello:app
