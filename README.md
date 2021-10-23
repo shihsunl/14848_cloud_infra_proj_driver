@@ -32,11 +32,16 @@ kubectl create -f service_main_driver_ssh-lb.yaml
 ## Services
 
 - Service Website
-![website](screenshot/website.png)
-![sonarscanner_frontend](screenshot/sonarscanner_frontend.png)
+![website-1](screenshot/website1.png)
+![website-2](screenshot/website2.png)
+
+- Web-based Terminal
+![terminals](screenshot/terminals.png)
+![terminal-example](screenshot/terminal-example.png)
 
 - I've used Reverse Proxy to make different url paths redirect to different services. For instance, when you use `34.135.47.138/spark`, it will redirect to `http://spark-service` which is the spark service with port 8080. You can check `https://github.com/shihsunl/14848_cloud_infra_proj_spark/blob/master/resource-manifests/service-spark.yaml` for more detail.
-![reverse_proxy](screenshot/reverse_proxy.png)
+![reverse_proxy](screenshot/reverse_proxy1.png)
+![reverse_proxy](screenshot/reverse_proxy2.png)
 
 - Hadoop Service
 ![hadoop](screenshot/hadoop.png)
@@ -47,7 +52,7 @@ kubectl create -f service_main_driver_ssh-lb.yaml
 - SonarQube Service
 ![sonarqube](screenshot/sonarqube.png)
 - SonarScanner Demo Website
-    - Normally, we need to use commandline to execute SonarScanner. However, we can not allow user to access our server and use commandline. Therefore, I've created a RESTful API Server to let user use SonarScanner.
+    - I've created a RESTful API Server to help users use SonarScanner. Users can also access the web-based terminal and use commandline.
     - How to use: 
         - First you need to create a project in SonarQube and get the token.
         - Then, choose a repository that you want to scan.
